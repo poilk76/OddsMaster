@@ -3,3 +3,5 @@ pytest-cov
 python-mock
 
 Unidecode
+
+rapidfuzz

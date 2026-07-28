@@ -30,6 +30,8 @@ SUFFIXES = [
     "crb", "grêmio", "sporting clube", "balompié",
 ]
 
+table = str.maketrans("", "", string.punctuation)
+
 def remove_prefixes_and_suffixes(text:str) -> str:
 
     text_lower = text.lower()
@@ -53,8 +55,6 @@ def is_word_a_number(text:str) -> bool:
         return False
 
     return True
-
-table = str.maketrans("", "", string.punctuation)
 
 def remove_punctuation(text: str) -> str:
     return text.translate(table)
