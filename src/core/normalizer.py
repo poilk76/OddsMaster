@@ -26,11 +26,9 @@ SUFFIXES = [
     "athletic club", "cd", "sc", "ac", "as", "us", "if", "ik", "ff", "bk",
     "sk", "fk", "nk", "hk", "jk", "pfc", "mfk", "msk", "calcio", "club",
     "sv", "tsv", "tsg", "vfb", "vfl", "fsv", "fußballclub",
-    "voetbal vereniging", "vv", "esporte clube", "ec", "gd", "se", "cr",
+    "voetbal vereniging", "vv", "esporte clube", "ec", "gd", "se", "cr","cf",
     "crb", "grêmio", "sporting clube", "balompié",
 ]
-
-table = str.maketrans("","")
 
 def remove_prefixes_and_suffixes(text:str) -> str:
 
@@ -56,13 +54,15 @@ def is_word_a_number(text:str) -> bool:
 
     return True
 
-def remove_punctuaction(text:str) -> str:
+table = str.maketrans("", "", string.punctuation)
 
-    return text.translate(table, string.punctuation)
+def remove_punctuation(text: str) -> str:
+    return text.translate(table)
 
 def remove_numbers(text:str) -> str:
 
-    text_splitted = text.split(' ')
+    text_striped = text.strip()
+    text_splitted = text_striped.split(' ')
 
     return ' '.join(
         [
@@ -70,16 +70,19 @@ def remove_numbers(text:str) -> str:
             if not is_word_a_number(word)
         ])
 
-def remove_unwanted_numbers_and_punctuaction(text:str) -> str:
+def remove_unwanted_numbers_and_punctuation(text:str) -> str:
 
-    remove_chain = remove_punctuaction | remove_numbers
+    text_without_punctuation = remove_punctuation(text)
+    text_without_numbers = remove_numbers(text_without_punctuation)
 
-    return remove_chain(text)
+    return text_without_numbers
 
 def normalize(text: str) -> str:
 
-    text_lower = text.lower()
+    text_striped = text.strip()
+    text_lower = text_striped.lower()
 
-    normalization_chain = remove_unwanted_numbers_and_punctuaction | remove_prefixes_and_suffixes | unidecode
+    text_without_numbers_and_punctuation = remove_unwanted_numbers_and_punctuation(text_lower)
+    text_without_prefixes_and_suffixes = remove_prefixes_and_suffixes(text_without_numbers_and_punctuation)
 
-    return normalization_chain(text_lower)
+    return unidecode(text_without_prefixes_and_suffixes)

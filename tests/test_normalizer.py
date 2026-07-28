@@ -33,10 +33,15 @@ class TestUnwantedPunctuactionAndNumbers:
     @pytest.mark.parametrize(
             "text, expected",
             [
-                ("2 .Newcastle, United 90", "Newcastle"),
-                ("1. Sporting CP.", "Sporting"),
-                (" 102, Real? Madrid CF", "Real Madrid"),
+                ("2 .Newcastle, United 90", "Newcastle United"),
+                ("1. Sporting CP.", "Sporting CP"),
+                (" 102, Real? Madrid CF", "Real Madrid CF"),
             ],
         )
     def test_common_club_suffixes(self,text,expected):
-        pass
+
+        assert normalizer.remove_unwanted_numbers_and_punctuation(text) == expected
+
+    def test_empty_string(self):
+        
+            assert normalizer.remove_unwanted_numbers_and_punctuation("") == ""
