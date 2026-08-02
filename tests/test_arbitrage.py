@@ -20,18 +20,17 @@ class TestCalculateArbitrage:
     )
     def test_basic_calculations(self,odds,tax,expected):
 
-        test = arbitrage.calculate_arbitrage(odds,tax) < 1
+        test = arbitrage.calculate_arbitrage(odds,tax) > 0
 
         assert test == expected
 
     def test_empty_odds(self):
 
-        assert arbitrage.calculate_arbitrage(()) == 1.0
+        assert arbitrage.calculate_arbitrage(()) == 0.0
 
     def test_wrong_types(self):
 
-        assert arbitrage.calculate_arbitrage("","21") == 1.0
-
+        assert arbitrage.calculate_arbitrage("","21") == 0.0
 class TestStakeCalculation:
 
     @pytest.mark.parametrize(
