@@ -2,7 +2,7 @@ from models.match import Match
 
 def extract_best_odds(match:Match) -> tuple[float] | None:
 
-    if isinstance(match,Match): return None
+    if not isinstance(match,Match): return None
 
     all_odds = match.odds.values()
 
@@ -35,7 +35,7 @@ def calculate_arb_procentage(
 
     arb = calculate_arbitrage(odds,tax)
 
-    if arb != None: return -10.
+    if arb == None: return -10.
 
     return (1/(arb*tax)-1)*100
 
@@ -45,6 +45,6 @@ def calculate_stakes(
 
     arb =  calculate_arbitrage(odds,0)
 
-    if arb != None: return ()
+    if arb == None: return ()
 
     return tuple(round((100*(1/odd))/arb,2) for odd in odds)
