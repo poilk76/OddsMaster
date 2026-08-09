@@ -1,9 +1,2 @@
 pytest
 pytest-cov
-python-mock
-
-Unidecode
-
-rapidfuzz
-
-pyyaml

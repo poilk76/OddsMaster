@@ -1,0 +1,8 @@
+fastapi[standard]
+uvicorn[standard]
+unidecode
+rapidfuzz
+pyyaml
+kafka-python
+redis
+pymongo
