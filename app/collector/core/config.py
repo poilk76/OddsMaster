@@ -38,6 +38,6 @@ class NormalizerConfig:
 @dataclass
 class MatcherConfig:
     normalizer:Normalizer
-    names_match_treashold:int=80 # in %
-    category_match_treashold:int=90 # in %
-    allowed_time_slippage:int=30 
+    names_match_treashold:int = 80 # in %
+    category_match_treashold:int = 90 # in %
+    allowed_time_slippage:int = 30 
