@@ -1,8 +1,16 @@
-from core.config import MatcherConfig
 from rapidfuzz.fuzz import ratio
 from models.match import Match
+from dataclasses import dataclass
+from core.normalization import Normalizer
 
 MATCH_DATA_KEYS = ('teams','category','time')
+
+@dataclass
+class MatcherConfig:
+    normalizer:Normalizer = Normalizer()
+    names_match_treashold:int = 80 # in %
+    category_match_treashold:int = 90 # in %
+    allowed_time_slippage:int = 30 
 
 class Matcher:
 

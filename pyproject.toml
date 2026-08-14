@@ -1,0 +1,7 @@
+[project]
+name = "OddsMaster"
+version = "0.0.1"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
