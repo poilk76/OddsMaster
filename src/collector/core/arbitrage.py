@@ -1,4 +1,4 @@
-from models.match import Match
+from collector.models.match import Match
 
 def extract_best_odds(match:Match) -> tuple[float] | None:
 
@@ -8,7 +8,7 @@ def extract_best_odds(match:Match) -> tuple[float] | None:
 
     rotate = [list(x) for x in zip(*all_odds)]
     
-    return (max(odds) for odds in rotate)
+    return tuple(max(odds) for odds in rotate)
 
 def calculate_arbitrage(
         odds:tuple[float]|Match,

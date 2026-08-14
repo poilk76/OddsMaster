@@ -75,9 +75,9 @@ class Normalizer:
 
     def normalize(self,text:str) -> str:
 
-        text = text.strip()
-
         if not isinstance(text,str): return ""
+
+        text = text.strip()
 
         if self.config.lower:
             text = text.lower()
