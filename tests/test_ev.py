@@ -48,10 +48,7 @@ class TestEvCalculations:
     )
     def test_some_ev_cases(self,odds:dict,tax:int,expected:float):
 
-        m = Match(odds=odds,
-                  id=None,teams=None,category=None,start=None,history=None,links=None,ev=None,arb=None)
-
-        assert calculate_ev(m,tax) == expected
+        assert calculate_ev(odds,tax) == expected
 
     @pytest.mark.parametrize(
         "odds, tax",
@@ -64,18 +61,14 @@ class TestEvCalculations:
         ]
     )
     def test_wrong_input(self,odds:dict,tax:int):
-
-        m = Match(odds=odds,
-                id=None,teams=None,category=None,start=None,history=None,links=None,ev=None,arb=None)
         
-        assert calculate_ev(m,tax) == ()
+        assert calculate_ev(odds,tax) == ()
 
     def test_zero_divition(self):
 
-        m = Match(odds={"test1":(0.,0.,1.)},
-                        id=None,teams=None,category=None,start=None,history=None,links=None,ev=None,arb=None)
-                
-        assert calculate_ev(m,0) == (-1.,-1.,0)
+        assert calculate_ev({
+            "test1":(0.,0.,1.)
+        },0) == (-1.,-1.,0)
 
 
 class TestKellyCalculations:
@@ -123,10 +116,7 @@ class TestKellyCalculations:
     )
     def test_some_kelly_cases(self,odds:dict,tax:int,expected:float):
 
-        m = Match(odds=odds,
-                  id=None, teams=None,category=None,start=None,history=None,links=None,ev=None,arb=None)
-        
-        assert calculate_kelly_criterion(m,tax) == expected
+        assert calculate_kelly_criterion(odds,tax) == expected
 
     @pytest.mark.parametrize(
         "odds, tax",
@@ -139,15 +129,11 @@ class TestKellyCalculations:
         ]
     )
     def test_wrong_input(self,odds:dict,tax:int):
-
-        m = Match(odds=odds,
-                id=None,teams=None,category=None,start=None,history=None,links=None,ev=None,arb=None)
         
-        assert calculate_ev(m,tax) == ()
+        assert calculate_ev(odds,tax) == ()
 
     def test_zero_divition(self):
-    
-            m = Match(odds={"test1":(0.,0.,1.)},
-                            id=None,teams=None,category=None,start=None,history=None,links=None,ev=None,arb=None)
-                    
-            assert calculate_ev(m,0) == (-1.,-1.,0)
+
+        assert calculate_ev({
+                    "test1":(0.,0.,1.)
+                },0) == (-1.,-1.,0)

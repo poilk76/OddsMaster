@@ -1,7 +1,6 @@
 from rapidfuzz.fuzz import ratio
-from models.match import Match
 from dataclasses import dataclass
-from core.normalization import Normalizer
+from collector.core.normalization import Normalizer
 
 MATCH_DATA_KEYS = ('teams','category','time')
 
@@ -25,7 +24,8 @@ class Matcher:
 
         return ratio(text1,text2) > treashold
 
-    def match_connector(self,match:Match) -> dict:
+    def match_connector(self,match) -> dict:
+        # change Match class in to correct input for matching
 
         return {
             "teams":[self.config.normalizer.normalize(team) \
@@ -35,16 +35,13 @@ class Matcher:
         }
 
     def matches_matcher(self,
-                      match1:dict | Match,
-                      match2:dict | Match
+                      match1:dict,
+                      match2:dict
                       ) -> bool:
 
         matches = (match1,match2)
 
         for match in matches:
-
-            if isinstance(match,Match):
-                match = self.match_connector(match)
 
             if match.keys() != MATCH_DATA_KEYS:
                 return False
