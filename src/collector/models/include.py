@@ -4,6 +4,7 @@ from dataclasses import dataclass
 class IncludeInput:
     version:int
     source:str
+    token:str
     teams:list[str,str]
     category:str
     start:float

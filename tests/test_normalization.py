@@ -1,7 +1,6 @@
 import pytest
 
-from collector.core.normalization import Normalizer
-from collector.core.normalization import NormalizerConfig
+from collector.core.normalization import Normalizer, NormalizerConfig
 
 class TestNormalization:
 

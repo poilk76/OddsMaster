@@ -43,25 +43,25 @@ class Matcher:
 
         for match in matches:
 
-            if match.keys() != MATCH_DATA_KEYS:
+            if tuple(match.keys()) != MATCH_DATA_KEYS:
                 return False
 
         teams_match = all(
             self.match_text(
-            matches[0].teams[i],
-            matches[1].teams[i],
+            matches[0]["teams"][i],
+            matches[1]["teams"][i],
             self.config.names_match_treashold)\
             for i in range(2)
         )
 
         category_match = self.match_text(
-            matches[0].category,
-            matches[1].category,
+            matches[0]["category"],
+            matches[1]["category"],
             self.config.category_match_treashold
         )
         
         time_match = abs(
-            matches[0].time - matches[1].time
+            matches[0]["time"] - matches[1]["time"]
         ) <= self.config.allowed_time_slippage*60
 
         return teams_match and\

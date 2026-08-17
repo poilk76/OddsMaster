@@ -1,7 +1,6 @@
 import pytest
 
 from collector.core.ev import calculate_ev, calculate_kelly_criterion
-from collector.models.match import Match
 
 class TestEvCalculations:
 
