@@ -1,7 +1,6 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
-@dataclass
-class IncludeInput:
+class IncludeInput(BaseModel):
     version:int
     source:str
     token:str
@@ -9,4 +8,4 @@ class IncludeInput:
     category:str
     start:float
     odds:list[float]
-    link:str
+    link:str | None = None

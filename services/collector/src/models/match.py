@@ -2,17 +2,16 @@ from dataclasses import dataclass
 
 from uuid import uuid8
 
-from collector.core.ev import calculate_ev, calculate_kelly_criterion
-from collector.core.arbitrage import calculate_arbitrage, calculate_stakes
+from services.collector.src.core.ev import calculate_ev, calculate_kelly_criterion
+from services.collector.src.core.arbitrage import calculate_arbitrage, calculate_stakes
 
-from collector.core.matcher import Matcher, MatcherConfig
+from services.collector.src.core.matcher import Matcher, MatcherConfig
 
-from collector.models.include import IncludeInput
+from services.collector.src.models.include import IncludeInput
 
 
 @dataclass
 class MatchInput:
-    id:int = uuid8()
     teams:list[str,str] | None = None
     category:str | None = None
     start:float | None  = None
@@ -34,7 +33,7 @@ class Match:
 
     def __input_to_self(self) -> None:
 
-        self.id = self.input.id
+        self.id = uuid8()
         self.teams = self.input.teams
         self.category = self.input.category
         self.start = self.input.start

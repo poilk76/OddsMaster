@@ -1,4 +1,4 @@
-from collector.core.arbitrage import extract_best_odds
+from services.collector.src.core.arbitrage import extract_best_odds
 
 def calculate_avg_procantage(
         odds :dict

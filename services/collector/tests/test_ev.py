@@ -1,6 +1,6 @@
 import pytest
 
-from collector.core.ev import calculate_ev, calculate_kelly_criterion
+from services.collector.src.core.ev import calculate_ev, calculate_kelly_criterion
 
 class TestEvCalculations:
 

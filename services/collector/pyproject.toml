@@ -1,5 +1,5 @@
 [project]
-name = "OddsMaster"
+name = "OddsMaster-collector"
 version = "0.0.1"
 
 [tool.pytest.ini_options]

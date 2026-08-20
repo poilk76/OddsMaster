@@ -1,6 +1,6 @@
 import pytest
 
-from collector.core.matcher import Matcher
+from services.collector.src.core.matcher import Matcher
 from dataclasses import dataclass
 
 from datetime import datetime, timedelta

@@ -1,6 +1,6 @@
 from rapidfuzz.fuzz import ratio
 from dataclasses import dataclass
-from collector.core.normalization import Normalizer
+from services.collector.src.core.normalization import Normalizer
 
 MATCH_DATA_KEYS = ('teams','category','time')
 

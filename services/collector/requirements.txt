@@ -6,3 +6,7 @@ pyyaml
 kafka-python
 redis
 pymongo
+psycopg2
+
+pytest
+pytest-cov
